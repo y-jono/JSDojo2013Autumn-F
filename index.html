@@ -79,7 +79,13 @@
 	  	  </li>
 	    	<li>
           <div>Q. 今日の感想を140字以内で書きなさい。(10点)</div>
-          <div id="result_q3"></div>
+          <ul>
+          {{#each}}
+            {{#if implession}}
+            <li>{{implession}}</li>
+            {{/if}}
+          {{/each}}
+          </ul>
 	  	  </li>
 	    </ul>
     </script>

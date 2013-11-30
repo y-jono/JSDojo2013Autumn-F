@@ -5,6 +5,12 @@ Questionnaire.Router.map(function() {
   this.route('result');
 });
 
+Questionnaire.ApplicationRoute = Ember.Route.extend({
+  model: function() {
+    return Ember.$.ajax('/data');
+  }
+});
+
 Questionnaire.IndexRoute = Ember.Route.extend({
   redirect: function() {
     this.transitionTo('new');

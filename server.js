@@ -16,6 +16,9 @@ server.get('/data', function(req, res) {
 server.put('/data', function(req, res) {
   DATA = req.body.data;
 
+  console.log('\033[33m*\033[39m data updated\033[33m:\033[39m');
+  console.log(DATA);
+
   res.send({status: 'OK'});
 });
 

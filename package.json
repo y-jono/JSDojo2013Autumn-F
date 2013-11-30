@@ -1,0 +1,23 @@
+{
+  "name": "JSDojo2013Autumn-F",
+  "version": "0.0.0",
+  "description": "JSDojo2013Autumn-F ==================",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/y-jono/JSDojo2013Autumn-F.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/y-jono/JSDojo2013Autumn-F/issues"
+  },
+  "homepage": "https://github.com/y-jono/JSDojo2013Autumn-F",
+  "dependencies": {
+    "express": "~ 3.0"
+  }
+}

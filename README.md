@@ -12,5 +12,5 @@ $ npm install
 ## 起動
 
 ```
-$ node server
+$ node app.js
 ```

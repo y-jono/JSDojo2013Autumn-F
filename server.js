@@ -1,6 +1,5 @@
 var express = require('express');
-var server = express()
-var PORT = Number(process.env.PORT || 3000);
+var server = express();
 
 var DATA = [];
 
@@ -22,5 +21,4 @@ server.put('/data', function(req, res) {
   res.send({status: 'OK'});
 });
 
-server.listen(PORT);
-console.log('Server listen on PORT=\033[36m%s\033[39m', PORT);
+module.exports = server;

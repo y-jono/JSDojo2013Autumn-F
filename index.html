@@ -34,6 +34,29 @@
 	  	  </li>
 	    </ul>
       {{input type="submit" value="登録"}}
+      {{#link-to "confirmation"}}
+        登録画面へ
+      {{/link-to}}
     </script>
+
+    <script type="text/x-handlebars" data-template-name="confirmation">
+    	<ul>
+	    	<li>
+	  		  <div>Q. JSDojoはもちろん楽しかったですよね！？</div>
+	  		  {{enjoyText}}
+	  	  </li>
+	    	<li>
+          <div>Q. 満足度を五段階で評価して下さい！</div>
+          {{selectedSatisfyPoint}}
+	  	  </li>
+	    	<li>
+          <div>Q. 今日の感想を140字以内で書きなさい。(10点)</div>
+          {{implession}}
+	  	  </li>
+	    </ul>
+      {{input type="submit" value="登録"}}
+    </script>
+
+
   </body>
 </html>

@@ -17,7 +17,7 @@ Questionnaire.NewRoute = Ember.Route.extend({
 });
 
 Questionnaire.ConfirmationRoute = Ember.Route.extend({
-    renderTemplate: function() {
-        this.render('confirmation', {controller: 'application'});
-    }
+  renderTemplate: function() {
+    this.render('confirmation', {controller: 'application'});
+  }
 });

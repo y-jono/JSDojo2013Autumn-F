@@ -1,6 +1,7 @@
 Questionnaire.Router.map(function() {
   this.route('new');
   this.route('confirmation');
+  this.route('thanks');
 });
 
 Questionnaire.IndexRoute = Ember.Route.extend({

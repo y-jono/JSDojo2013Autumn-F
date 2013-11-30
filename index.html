@@ -35,7 +35,7 @@
 	    </ul>
 <!--      {{input type="submit" value="登録"}} -->
       {{#link-to "confirmation"}}
-        登録
+        確認
       {{/link-to}}
     </script>
 
@@ -54,8 +54,14 @@
           {{implession}}
 	  	  </li>
 	    </ul>
+      <button {{action "submit"}}>登録</button>
     </script>
 
-
+    <script type="text/x-handlebars" data-template-name="thanks">
+      <div>ありがとうございました！</div>
+      {{#link-to "new"}}
+        TOPに戻る
+      {{/link-to}}
+    </script>
   </body>
 </html>

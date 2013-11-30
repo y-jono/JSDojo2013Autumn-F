@@ -6,20 +6,29 @@ Questionnaire.ResultView = Ember.View.extend({
   },
 
   showQ1Result: function(content) {
-    console.log(content);
-    console.log(content.filterBy("isEnjoy", "true").length);
-    var ctx = this.$('#result_q1')[0].getContext('2d');
-    new Chart(ctx).Bar({
-      labels: ["楽しかった", "楽しくなかった"],
-      datasets: [{
-        fillColor: "rgba(220,220,220,0.5)",
-        strokeColor : "rgba(220,220,220,1)",
-        data: [
-          content.filterBy("isEnjoy", "true").length,
-          content.filterBy("isEnjoy", "false").length
-        ]
-      }]
-    });
+    // console.log(content);
+    // console.log(content.filterBy("isEnjoy", true).length);
+    // console.log(content.filterBy("isEnjoy", "true").length);
+
+    var ctx = this.$('#result_q1')[0].getContext('2d'),
+        countOfWhoAgreed    = content.filterBy("isEnjoy", "true").length,
+        countOfWhoNotAgreed = content.filterBy("isEnjoy", "false").length,
+
+        data = {
+          labels: ["楽しかった", "楽しくなかった"],
+          datasets: [{
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(220,220,220,1)",
+            data: [countOfWhoAgreed, countOfWhoNotAgreed]
+          }]
+        },
+        option = {
+          scaleOverride: true,
+          scaleSteps: Math.max(countOfWhoAgreed, countOfWhoNotAgreed),
+          scaleStepWidth: 1,
+          scaleStartValue: 0
+        };
+    new Chart(ctx).Bar(data, option);
   },
 
   showQ2Result: function(content) {

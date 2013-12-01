@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.css">
     <script src="js/jquery-2.0.3.js"></script>
     <script src="js/handlebars-v1.1.2.js"></script>
     <script src="js/Chart.min.js"></script>
@@ -10,78 +11,126 @@
     <script src="js/controller.js"></script>
     <script src="js/view.js"></script>
     <script src="js/router.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
   </head>
   <body>
 
     <script type="text/x-handlebars">
-      <h1>
-      アンケートアプリ
-      </h1>
-      {{outlet}}
+      <div class="container">
+        <div class="page-header">
+          <h1>アンケートアプリ</h1>
+        </div>
+        {{outlet}}
+      </div>
     </script>
 
     <script type="text/x-handlebars" data-template-name="new">
-    	<ul>
-	    	<li>
-	  		  <div>Q. JSDojoはもちろん楽しかったですよね！？</div>
-	  		  {{input type="checkbox" checked=isEnjoy}} はい
-	  	  </li>
-	    	<li>
-          <div>Q. 満足度を五段階で評価して下さい！</div>
-          {{view Ember.Select content=satisfyPoints value=selectedSatisfyPoint}}
-	  	  </li>
-	    	<li>
-          <div>Q. 今日の感想を140字以内で書きなさい。(10点)</div>
-          {{textarea value=implession}}
-	  	  </li>
-	    </ul>
-<!--      {{input type="submit" value="登録"}} -->
-      {{#link-to "confirmation"}}
-        確認
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Q. JSDojoはもちろん楽しかったですよね！？</h3>
+        </div>
+        <div class="panel-body">
+          {{input type="checkbox" checked=isEnjoy}} はい
+        </div>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Q. 満足度を五段階で評価して下さい！</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-1">
+              {{view Ember.Select content=satisfyPoints value=selectedSatisfyPoint class="form-control span1"}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Q. 今日の感想を140字以内で書きなさい。(10点)</h3>
+        </div>
+        <div class="panel-body">
+          {{textarea value=implession class="form-control" rows="2"}}
+        </div>
+      </div>
+
+      {{#link-to "confirmation" class="btn btn-default"}}
+        <span class="glyphicon glyphicon-ok"> 確認</span>
       {{/link-to}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="confirmation">
-    	<ul>
-	    	<li>
-	  		  <div>Q. JSDojoはもちろん楽しかったですよね！？</div>
-	  		  {{enjoyText}}
-	  	  </li>
-	    	<li>
-          <div>Q. 満足度を五段階で評価して下さい！</div>
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Q. JSDojoはもちろん楽しかったですよね！？</h3>
+        </div>
+        <div class="panel-body">
+          {{enjoyText}}
+        </div>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Q. 満足度を五段階で評価して下さい！</h3>
+        </div>
+        <div class="panel-body">
           {{selectedSatisfyPoint}}
-	  	  </li>
-	    	<li>
-          <div>Q. 今日の感想を140字以内で書きなさい。(10点)</div>
+        </div>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Q. 今日の感想を140字以内で書きなさい。(10点)</h3>
+        </div>
+        <div class="panel-body">
           {{implession}}
-	  	  </li>
-	    </ul>
-      <button {{action "submit"}}>登録</button>
+        </div>
+      </div>
+
+      <button {{action "submit"}} class="btn btn-default">
+        <span class="glyphicon glyphicon-share-alt"> 登録</span>
+      </button>
     </script>
 
     <script type="text/x-handlebars" data-template-name="thanks">
-      <div>ありがとうございました！</div>
-      {{#link-to "new"}}
-        TOPに戻る
+      <h4>ありがとうございました！</h4>
+
+      {{#link-to "new" class="btn btn-default"}}
+        <span class="glyphicon glyphicon-backward"> TOPに戻る</span>
       {{/link-to}}
-      {{#link-to "result"}}
-        集計結果を見る
+
+      {{#link-to "result" class="btn btn-default"}}
+        <span class="glyphicon glyphicon-stats"> 集計結果をみる</span>
       {{/link-to}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="result">
-      <h2>集計結果</h2>
-    	<ul>
-	    	<li>
-	  		  <div>Q. JSDojoはもちろん楽しかったですよね！？</div>
+      <h3>集計結果</h3>
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Q. JSDojoはもちろん楽しかったですよね！？</h3>
+        </div>
+        <div class="panel-body">
           <canvas id="result_q1" width="250" height="250"></canvas>
-	  	  </li>
-	    	<li>
-          <div>Q. 満足度を五段階で評価して下さい！</div>
+        </div>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Q. 満足度を五段階で評価して下さい！</h3>
+        </div>
+        <div class="panel-body">
           <canvas id="result_q2" width="250" height="250"></canvas>
-	  	  </li>
-	    	<li>
-          <div>Q. 今日の感想を140字以内で書きなさい。(10点)</div>
+        </div>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Q. 今日の感想を140字以内で書きなさい。(10点)</h3>
+        </div>
+        <div class="panel-body">
           <ul>
           {{#each}}
             {{#if implession}}
@@ -89,10 +138,11 @@
             {{/if}}
           {{/each}}
           </ul>
-	  	  </li>
-	    </ul>
-      {{#link-to "new"}}
-        TOPに戻る
+
+        </div>
+      </div>
+      {{#link-to "new" class="btn btn-default"}}
+        <span class="glyphicon glyphicon-backward"> TOPに戻る</span>
       {{/link-to}}
     </script>
   </body>
